@@ -1,7 +1,6 @@
 # Summary
-proff of concept that server1 and get dynamic js functions from server2 and hook up the functions with the html elements. When event fires,
-we are able to extract information from server1 and return the data to server2. Then what server2 does using the data is another business.
-
+proff of concept that server1 can get dynamic js functions from server2 and hook up the functions with the html elements. When event fires,
+we are able to extract information from server1 and return the data to server2.
 
 # Steps to run
 1. download visual studio 2019 preview
