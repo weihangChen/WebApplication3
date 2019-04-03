@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="title">
+    <h1 class="title subheading-2" itemprop="name">Banan Eko Klass 1</h1>
+</div>
+
+<div class="row">
+    <button type="button" id="hook">click me, test senario</button>
+    <div id="tagcontainer">
+        <h1>test</h1>
+    </div>
+</div>
+
+
+
+
+@section scripts {
+
+    <script type="text/javascript">
+        //following is the original click function for the button
+        //this function test if it can use javascript to grap the banana html
+        $(document).on('click', '#hook', function (e) {
+            var te = document.evaluate(".//div/h1", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+            alert(te.innerHTML);
+        })
+
+        //this is part of our platform lib, sends current url to the server, get dynamic functions back based on configurations
+        $(document).ready(function () {
+            var url = "http://localhost:54738/Home/GetScript";
+            $.ajax({
+                type: 'POST',
+                url: url,
+                //data: { 'currenturl', },
+                success: function (data) {
+                    $('#tagcontainer').html(data.script);
+                },
+                error: function (jqXHR, status, err) {//status is Error and the errorThrown is undefined
+                    alert(jqXHR);
+                }
+            });
+        });
+        //function getElementByXpath(path) {
+        //    return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        //}
+
+    </script>
+}
